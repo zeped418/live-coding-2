@@ -26,14 +26,14 @@ boton.addEventListener("click", function (element) {
 })
 
 function getData() {
-    let promesa = fetch("https://yesno.wtf/api", {method: "GET"});
+    let promesa = fetch("https://yesno.wtf/api", { method: "GET" });
 
     promesa
         .then((response) => {
             response.json()
                 .then((data) => {
                     //inserta la respuesta consumida de la API
-                    answer.insertAdjacentHTML("afterbegin", `${respuesta.answer}`);
+                    getAnswer(data);    
                 })
                 .catch((error) => {
                     console.error(error, "Ups! error en JSON");
@@ -44,6 +44,10 @@ function getData() {
         });
 };//getData
 
+
+function getAnswer(respuesta) {
+    answer.insertAdjacentHTML("afterbegin", `${respuesta.answer}`);
+}
 
 
 
